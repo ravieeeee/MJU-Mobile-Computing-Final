@@ -4,14 +4,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.mju_mobile_computing_final.Event.OnMove;
 import com.example.mju_mobile_computing_final.View.AddingBuildingDialogFragment;
 
 public class MainActivity extends AppCompatActivity implements AddingBuildingDialogFragment.AddingBuildingDialogListener {
-    private float dX, dY;
     private TextView tv_test;
     private FloatingActionButton fab;
     private static final String TAG = MainActivity.class.getName();
@@ -31,31 +32,20 @@ public class MainActivity extends AppCompatActivity implements AddingBuildingDia
         });
 
         tv_test = findViewById(R.id.tv_test);
-        tv_test.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        dX = view.getX() - event.getRawX();
-                        dY = view.getY() - event.getRawY();
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        view.animate()
-                            .x(event.getRawX() + dX)
-                            .y(event.getRawY() + dY)
-                            .setDuration(0)
-                            .start();
-                        break;
-                    default:
-                        return false;
-                }
-                return true;
-            }
-        });
+        tv_test.setOnTouchListener(new OnMove());
     }
 
     @Override
     public void onDialogPositiveClick(String buildingName) {
         Log.d(TAG, "buildingName: " + buildingName);
+        LayoutInflater inflater = getLayoutInflater();
+        View v = inflater.inflate(R.layout.dialog_tv, null);
+
+        TextView tv_building = v.findViewById(R.id.tv_building);
+        tv_building.setText(buildingName);
+        tv_building.setOnTouchListener(new OnMove());
+
+        ViewGroup vg = findViewById(R.id.l_activity_main);
+        vg.addView(v, 0);
     }
 }
