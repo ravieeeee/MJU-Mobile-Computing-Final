@@ -28,5 +28,11 @@ dependencies {
 
     // google sign-in
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
+
+    // material design
     implementation 'com.android.support:design:26.1.0'
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 }
