@@ -31,6 +31,8 @@ dependencies {
 
     // material design
     implementation 'com.android.support:design:26.1.0'
+    // materialEditText
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
 
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
