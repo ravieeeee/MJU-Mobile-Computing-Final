@@ -6,14 +6,50 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.mju_mobile_computing_final.DTO.UserInfo;
 import com.example.mju_mobile_computing_final.R;
+import com.github.nkzawa.socketio.client.IO;
+import com.github.nkzawa.socketio.client.Socket;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URISyntaxException;
 
 public class ChatFragment extends Fragment {
+    private UserInfo user = UserInfo.getInstance();
+    private Button btn_send;
+    private Socket mSocket;
+    {
+        try {
+            mSocket = IO.socket(getResources().getString(R.string.server_url));
+        } catch (URISyntaxException e) {}
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_chat, container, false);
+        View v = inflater.inflate(R.layout.fragment_chat, container, false);
+        mSocket.connect();
+
+        btn_send = v.findViewById(R.id.btn_send);
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                JSONObject chat = new JSONObject();
+                try {
+                    chat.put("displayName", user.getDisplayName());
+                    chat.put("email", user.getEmail());
+                    chat.put("content", "hello~!");
+                } catch (JSONException e) {
+                    return;
+                }
+
+                mSocket.emit("new message", chat);
+            }
+        });
+        return v;
     }
 }
