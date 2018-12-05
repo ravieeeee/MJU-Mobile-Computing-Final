@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.RadioGroup;
 import com.example.mju_mobile_computing_final.R;
 
 public class AddingBuildingDialogFragment extends DialogFragment {
+    private AddingBuildingDialogListener callback;
     private EditText et_buildingName;
     private RadioGroup rg_dialog;
     private int selectedId;
@@ -24,17 +26,14 @@ public class AddingBuildingDialogFragment extends DialogFragment {
         void onDialogPositiveClick(String buildingName, String size);
     }
 
-    AddingBuildingDialogListener mListener;
-
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         try {
-            mListener = (AddingBuildingDialogListener) activity;
+            callback = (AddingBuildingDialogListener) getTargetFragment();
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                + " must implement NoticeDialogListener");
+            throw new ClassCastException("Calling Fragment must implement AddingBuildingDialogListener");
         }
     }
 
@@ -57,7 +56,7 @@ public class AddingBuildingDialogFragment extends DialogFragment {
                     String size = rb_selected.getText().toString();
 
                     String buildingName = et_buildingName.getText().toString();
-                    mListener.onDialogPositiveClick(buildingName, size);
+                    callback.onDialogPositiveClick(buildingName, size);
                 }
             })
             .setNegativeButton(R.string.dialog_addition_no, new DialogInterface.OnClickListener() {
