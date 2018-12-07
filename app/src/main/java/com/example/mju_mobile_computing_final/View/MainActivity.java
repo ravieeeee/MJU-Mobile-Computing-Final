@@ -1,10 +1,12 @@
-package com.example.mju_mobile_computing_final;
+package com.example.mju_mobile_computing_final.View;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.mju_mobile_computing_final.View.TabPageAdapter;
+
+import com.example.mju_mobile_computing_final.R;
+import com.example.mju_mobile_computing_final.View.Utils.TabPageAdapter;
 
 public class MainActivity extends AppCompatActivity{
     private TabLayout tabLayout;

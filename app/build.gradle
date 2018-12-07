@@ -35,6 +35,10 @@ dependencies {
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
     // Material Icon Library
     implementation 'net.steamcrafted:materialiconlib:1.1.5'
+    // RecyclerView
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.0.0'
 
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'

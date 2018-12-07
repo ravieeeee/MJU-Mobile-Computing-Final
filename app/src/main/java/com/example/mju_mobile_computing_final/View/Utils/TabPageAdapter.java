@@ -1,8 +1,11 @@
-package com.example.mju_mobile_computing_final.View;
+package com.example.mju_mobile_computing_final.View.Utils;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.example.mju_mobile_computing_final.View.ChatFragment;
+import com.example.mju_mobile_computing_final.View.MapFragment;
 
 public class TabPageAdapter extends FragmentStatePagerAdapter {
     private int currentTab;

@@ -2,15 +2,15 @@ package com.example.mju_mobile_computing_final.DTO;
 
 import android.net.Uri;
 
-public class UserInfo {
-    private static UserInfo instance = new UserInfo();
-
+public class User {
     private String displayName = null;
     private String email = null;
     private Uri photoUrl = null;
 
-    public static UserInfo getInstance() {
-        return instance;
+    public User(String displayName, String email, Uri photoUrl) {
+        this.displayName = displayName;
+        this.email = email;
+        this.photoUrl = photoUrl;
     }
 
     public String getDisplayName() {

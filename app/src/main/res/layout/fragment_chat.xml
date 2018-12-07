@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 >
-    <Button
-        android:id="@+id/btn_send"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="send"
-    />
-</FrameLayout>
+    >
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+    >
+        <EditText
+            android:id="@+id/et_chat"
+            android:layout_width="0dp"
+            android:layout_weight=".8"
+            android:layout_height="wrap_content"
+        />
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="0dp"
+            android:layout_weight=".2"
+            android:layout_height="wrap_content"
+            android:text="send"
+        />
+    </LinearLayout>
+</RelativeLayout>

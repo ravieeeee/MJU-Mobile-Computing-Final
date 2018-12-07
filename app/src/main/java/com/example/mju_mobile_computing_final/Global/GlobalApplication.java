@@ -1,6 +1,7 @@
 package com.example.mju_mobile_computing_final.Global;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.example.mju_mobile_computing_final.Network.NetworkService;
 
@@ -9,10 +10,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class GlobalApplication extends Application {
     public static NetworkService service;
+    public static Context context;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        context = getApplicationContext();
         retrofitInit();
     }
 

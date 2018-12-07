@@ -1,4 +1,4 @@
-package com.example.mju_mobile_computing_final;
+package com.example.mju_mobile_computing_final.View;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,7 +7,8 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 
-import com.example.mju_mobile_computing_final.DTO.UserInfo;
+import com.example.mju_mobile_computing_final.DTO.MyInfo;
+import com.example.mju_mobile_computing_final.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -22,7 +23,7 @@ public class SignInActivity extends Activity {
 
     private GoogleSignInClient mGoogleSignInClient;
     private SignInButton sign_in_button;
-    private UserInfo user = UserInfo.getInstance();
+    private MyInfo user = MyInfo.getInstance();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
