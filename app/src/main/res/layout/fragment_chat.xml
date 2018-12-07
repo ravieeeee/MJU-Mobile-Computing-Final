@@ -19,19 +19,24 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-    >
+        >
         <EditText
             android:id="@+id/et_chat"
             android:layout_width="0dp"
             android:layout_weight=".8"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
         />
-        <Button
-            android:id="@+id/btn_send"
-            android:layout_width="0dp"
-            android:layout_weight=".2"
-            android:layout_height="wrap_content"
-            android:text="send"
+        <net.steamcrafted.materialiconlib.MaterialIconView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/icon_send"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:materialIcon="send"
+            app:materialIconColor="#000000"
+            app:materialIconSize="24dp"
+            android:scaleType="center"
+            android:background="#ffffff"
         />
     </LinearLayout>
 </RelativeLayout>

@@ -6,12 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.mju_mobile_computing_final.DTO.Chatting;
 import com.example.mju_mobile_computing_final.DTO.MyInfo;
@@ -26,11 +25,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ChatFragment extends Fragment {
     private MyInfo user = MyInfo.getInstance();
-    private Button btn_send;
+    private ImageView icon_send;
     private Socket mSocket;
     private EditText et_chat;
     private RecyclerView rv_chat;
@@ -42,18 +43,13 @@ public class ChatFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_chat, container, false);
-        btn_send = v.findViewById(R.id.btn_send);
+        icon_send = v.findViewById(R.id.icon_send);
         et_chat = v.findViewById(R.id.et_chat);
         rv_chat = v.findViewById(R.id.rv_chat);
         rv_chat.setHasFixedSize(true);
         rv_chat.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
         chattingData = new ArrayList<>();
-        chattingData.add(new Chatting(
-                new User("편주영", "pyeonjy97@gmail.com",
-                        Uri.parse("https://lh3.googleusercontent.com/a-/AN66SAy-yvnRC9gMWLu36QSNOCrhL7aFMtZspmhOGvHW")
-                ), "init"
-        ));
         chatRecyclerViewAdapter = new ChatRecyclerViewAdapter(getContext(), chattingData);
         rv_chat.setAdapter(chatRecyclerViewAdapter);
 
@@ -72,7 +68,7 @@ public class ChatFragment extends Fragment {
         mSocket.on("new message", onNewMessage);
         mSocket.connect();
 
-        btn_send.setOnClickListener(new View.OnClickListener() {
+        icon_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 JSONObject chat = new JSONObject();
@@ -81,6 +77,9 @@ public class ChatFragment extends Fragment {
                     chat.put("displayName", user.getDisplayName());
                     chat.put("email", user.getEmail());
                     chat.put("content", et_chat.getText().toString());
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd h:mm a");
+                    String date = sdf.format(new Date(System.currentTimeMillis()));
+                    chat.put("date", date);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -104,7 +103,9 @@ public class ChatFragment extends Fragment {
                             Uri.parse(data.getString("photoUrl"))
                         );
                         String content = data.getString("content");
-                        Chatting chatting = new Chatting(user, content);
+                        String date = data.getString("date");
+
+                        Chatting chatting = new Chatting(user, content, date);
                         chattingData.add(chatting);
 //                        chatRecyclerViewAdapter.notifyItemInserted(position);
                         chatRecyclerViewAdapter.notifyDataSetChanged();

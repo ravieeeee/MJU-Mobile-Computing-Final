@@ -3,16 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
 >
     <ImageView
         android:id="@+id/iv_chat_user"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="5dp"
+        android:foreground="@drawable/rounded_fg"
     />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginLeft="5dp"
     >
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,21 +29,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="3dp"
                 android:textSize="17sp"
-                android:text="편주영"
+                android:textStyle="bold"
             />
             <TextView
                 android:id="@+id/tv_chat_user_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:text="pyeonjy97@gmail.com"
             />
         </LinearLayout>
+        <TextView
+            android:id="@+id/tv_chat_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+        />
         <TextView
             android:id="@+id/tv_chat_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="안녕하세요 길위치를 좀 알려주세용"
         />
     </LinearLayout>
 </LinearLayout>
