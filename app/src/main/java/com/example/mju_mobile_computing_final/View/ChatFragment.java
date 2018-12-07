@@ -22,19 +22,27 @@ public class ChatFragment extends Fragment {
     private UserInfo user = UserInfo.getInstance();
     private Button btn_send;
     private Socket mSocket;
-    {
-        try {
-            mSocket = IO.socket(getResources().getString(R.string.server_url));
-        } catch (URISyntaxException e) {}
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_chat, container, false);
+        btn_send = v.findViewById(R.id.btn_send);
+
+        return v;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        try {
+            mSocket = IO.socket(getResources().getString(R.string.server_url));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         mSocket.connect();
 
-        btn_send = v.findViewById(R.id.btn_send);
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +58,6 @@ public class ChatFragment extends Fragment {
                 mSocket.emit("new message", chat);
             }
         });
-        return v;
     }
+
 }
