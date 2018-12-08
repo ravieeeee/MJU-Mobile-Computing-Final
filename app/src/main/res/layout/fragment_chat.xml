@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        >
+    >
         <EditText
             android:id="@+id/et_chat"
             android:layout_width="0dp"
