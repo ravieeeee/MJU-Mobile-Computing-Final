@@ -36,7 +36,7 @@
             app:materialIconColor="#000000"
             app:materialIconSize="24dp"
             android:scaleType="center"
-            android:background="#ffffff"
+            android:background="@android:color/transparent"
         />
     </LinearLayout>
 </RelativeLayout>

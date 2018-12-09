@@ -85,8 +85,10 @@ public class ChatFragment extends Fragment {
                 }
 
                 mSocket.emit("new message", chat);
+                et_chat.getText().clear();
             }
         });
+
     }
 
     private Emitter.Listener onNewMessage = new Emitter.Listener() {

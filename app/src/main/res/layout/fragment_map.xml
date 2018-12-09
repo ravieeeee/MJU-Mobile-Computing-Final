@@ -5,6 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 >
+    <net.steamcrafted.materialiconlib.MaterialIconView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/icon_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:materialIcon="plus"
+        app:materialIconColor="@color/colorPrimaryDark"
+        app:materialIconSize="600dp"
+        android:scaleType="center"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+    />
+    <net.steamcrafted.materialiconlib.MaterialIconView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/icon_map"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:materialIcon="map"
+        app:materialIconColor="@color/colorPrimaryDark"
+        app:materialIconSize="24dp"
+        android:scaleType="center"
+        android:background="@android:color/transparent"
+        android:layout_gravity="left|top"
+        android:layout_margin="20dp"
+    />
+    <net.steamcrafted.materialiconlib.MaterialIconView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/icon_share"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:materialIcon="share_variant"
+        app:materialIconColor="@color/colorPrimaryDark"
+        app:materialIconSize="24dp"
+        android:scaleType="center"
+        android:background="@android:color/transparent"
+        android:layout_gravity="left|bottom"
+        android:layout_margin="20dp"
+    />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_main"
         android:layout_width="wrap_content"
